@@ -10,26 +10,33 @@ Small Next.js + FastAPI app that can **explain**, **analyze**, and **convert** c
 
 ```bash
 ollama pull codellama
+```
 
-##Backend (FastAPI)
+## Backend (FastAPI)
 
+```bash
 cd backend
 python -m venv .venv
 # Windows: . .venv/Scripts/activate
 pip install -r requirements.txt
+```
 
 Create backend/.env:
 OLLAMA_BASE_URL=http://127.0.0.1:11434
 OLLAMA_MODEL=codellama
 
 Run:
+```bash
 uvicorn main:app --reload --port 8000
+```
 
 
-##Frontend (Next.js)
+## Frontend (Next.js)
+```bash
 npm install
 npm run dev
 # opens http://localhost:3000 (may switch to 3001 if 3000 is busy)
+```
 
 Notes
 
