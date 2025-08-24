@@ -5,13 +5,11 @@ Small Next.js + FastAPI app that can **explain**, **analyze**, and **convert** c
 ## Requirements
 - Node 18+
 - Python 3.10+
-- [Ollama](https://ollama.com) running on `http://127.0.0.1:11434`
+- Ollama running on `http://127.0.0.1:11434`
 - A model pulled (e.g. `codellama` or `codellama:7b-instruct-q4_0`)
 
 ```bash
-ollama pull codellama:7b-instruct-q4_0
-# quick check
-ollama run codellama:7b-instruct-q4_0 "hello"
+ollama pull codellama
 
 Backend (FastAPI)
 
