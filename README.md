@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CodeExplainr
 
-## Getting Started
+Small Next.js + FastAPI app that can **explain**, **analyze**, and **convert** code using a local LLM via Ollama.
 
-First, run the development server:
+## Requirements
+- Node 18+
+- Python 3.10+
+- [Ollama](https://ollama.com) running on `http://127.0.0.1:11434`
+- A model pulled (e.g. `codellama` or `codellama:7b-instruct-q4_0`)
 
 ```bash
+ollama pull codellama:7b-instruct-q4_0
+# quick check
+ollama run codellama:7b-instruct-q4_0 "hello"
+
+Backend (FastAPI)
+
+cd backend
+python -m venv .venv
+# Windows: . .venv/Scripts/activate
+pip install -r requirements.txt
+
+Create backend/.env:
+OLLAMA_BASE_URL=http://127.0.0.1:11434
+OLLAMA_MODEL=codellama
+
+Run:
+uvicorn main:app --reload --port 8000
+
+
+Frontend (Next.js)
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# opens http://localhost:3000 (may switch to 3001 if 3000 is busy)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Keep one Ollama server running (service or ollama serve, not both).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If the browser blocks requests, add your dev URL to FRONTEND_ORIGINS and restart the backend.
 
-## Learn More
+If Ollama throws a 500 about CUDA/“unable to allocate”, free some RAM or use the 7b-instruct-q4_0 tag.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
