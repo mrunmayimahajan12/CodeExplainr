@@ -13,7 +13,7 @@ ollama pull codellama:7b-instruct-q4_0
 # quick check
 ollama run codellama:7b-instruct-q4_0 "hello"
 
-Backend (FastAPI)
+##Backend (FastAPI)
 
 cd backend
 python -m venv .venv
@@ -28,7 +28,7 @@ Run:
 uvicorn main:app --reload --port 8000
 
 
-Frontend (Next.js)
+##Frontend (Next.js)
 npm install
 npm run dev
 # opens http://localhost:3000 (may switch to 3001 if 3000 is busy)
