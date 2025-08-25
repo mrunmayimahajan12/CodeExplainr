@@ -2,6 +2,22 @@
 
 Small Next.js + FastAPI app that can **explain**, **analyze**, and **convert** code using a local LLM via Ollama.
 
+## Tech Stack
+
+**Frontend**
+- Next.js (App Router), React 18, TypeScript
+- Tailwind CSS + shadcn/ui (Radix) + lucide-react
+- Client streaming over `fetch`; diff + analysis views in the UI
+
+**Backend**
+- FastAPI + Uvicorn (Python 3.10+)
+- Pydantic for request/response models
+- `requests` to call the Ollama HTTP API
+
+**LLM Runtime**
+- Ollama (local) with Code Llama models  
+  e.g. `codellama` and `codellama:7b-instruct-q4_0`
+
 ## Requirements
 - Node 18+
 - Python 3.10+
